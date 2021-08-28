@@ -6,9 +6,9 @@ import com.nonesoft.tutorial.Tutorial;
 import lombok.val;
 
 public class DesktopLauncher {
-	public static void main (String[] arg) {
-		val config = new Lwjgl3ApplicationConfiguration();
-		config.setWindowedMode(1024, 768);
-		new Lwjgl3Application(new Tutorial(), config);
-	}
+    public static void main(String[] arg) {
+        val config = new Lwjgl3ApplicationConfiguration();
+        config.setWindowedMode(1024, 768);
+        new Lwjgl3Application(new Tutorial(), config);
+    }
 }
