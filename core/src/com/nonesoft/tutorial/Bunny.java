@@ -1,12 +1,10 @@
 package com.nonesoft.tutorial;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import lombok.Setter;
 import lombok.NonNull;
+import lombok.Setter;
 
 public class Bunny implements GameEntity {
     @Setter
@@ -15,7 +13,7 @@ public class Bunny implements GameEntity {
     private Vector2 velocity;
     @Setter
     private Vector2 bounds;
-    private Texture texture;
+    private final Texture texture;
 
     Bunny(Texture texture) {
         this.texture = texture;
