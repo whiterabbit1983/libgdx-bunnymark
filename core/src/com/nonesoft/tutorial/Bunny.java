@@ -3,9 +3,10 @@ package com.nonesoft.tutorial;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
 public class Bunny implements GameEntity {
     @Setter
@@ -14,10 +15,10 @@ public class Bunny implements GameEntity {
     private Vector2 velocity;
     @Setter
     private Vector2 bounds;
-    private final Texture img;
+    private Texture texture;
 
-    Bunny(String fileName) {
-        img = new Texture(Gdx.files.internal(fileName));
+    Bunny(Texture texture) {
+        this.texture = texture;
         position = Vector2.Zero;
         velocity = Vector2.Zero;
         bounds = Vector2.Zero;
@@ -32,12 +33,12 @@ public class Bunny implements GameEntity {
     }
 
     @Override
-    public void draw(@NotNull SpriteBatch batch) {
-        batch.draw(img, position.x, position.y);
+    public void draw(@NonNull SpriteBatch batch) {
+        batch.draw(texture, position.x, position.y);
     }
 
     @Override
     public void dispose() {
-        img.dispose();
+        texture.dispose();
     }
 }

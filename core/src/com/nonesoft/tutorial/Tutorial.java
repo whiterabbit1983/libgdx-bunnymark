@@ -3,6 +3,7 @@ package com.nonesoft.tutorial;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -17,6 +18,7 @@ public class Tutorial extends ApplicationAdapter {
     Array<Bunny> bunnies;
     OrthographicCamera camera;
     BitmapFont font;
+    Texture bunnyTex;
 
     void addBunnies(int n) {
         for (int i = 0; i <= n; i++) {
@@ -24,7 +26,7 @@ public class Tutorial extends ApplicationAdapter {
             touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
             camera.unproject(touchPos);
 
-            val b = new Bunny("wabbit_alpha.png");
+            val b = new Bunny(bunnyTex);
             b.setPosition(new Vector2(touchPos.x, touchPos.y));
             b.setVelocity(new Vector2(MathUtils.random(-200, 200), MathUtils.random(-200, 200)));
             b.setBounds(new Vector2(1024, 768));
@@ -35,6 +37,7 @@ public class Tutorial extends ApplicationAdapter {
 
     @Override
     public void create() {
+        bunnyTex = new Texture(Gdx.files.internal("wabbit_alpha.png"));
         batch = new SpriteBatch();
         bunnies = new Array<>();
         camera = new OrthographicCamera();
@@ -57,6 +60,7 @@ public class Tutorial extends ApplicationAdapter {
     public void render() {
         update(Gdx.graphics.getDeltaTime());
         ScreenUtils.clear(0, 1, 1, 1);
+        batch.setProjectionMatrix(camera.combined);
         batch.begin();
         for (val b : bunnies) {
             b.draw(batch);
