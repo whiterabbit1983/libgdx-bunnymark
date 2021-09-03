@@ -47,6 +47,7 @@ public class Tutorial extends ApplicationAdapter {
 
     private void update(float deltaTime) {
         camera.update();
+        batch.setProjectionMatrix(camera.combined);
         if (Gdx.input.isTouched()) {
             addBunnies(100);
         }
@@ -58,9 +59,8 @@ public class Tutorial extends ApplicationAdapter {
 
     @Override
     public void render() {
-        update(Gdx.graphics.getDeltaTime());
         ScreenUtils.clear(0, 1, 1, 1);
-        batch.setProjectionMatrix(camera.combined);
+        update(Gdx.graphics.getDeltaTime());
         batch.begin();
         for (val b : bunnies) {
             b.draw(batch);

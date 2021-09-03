@@ -3,8 +3,8 @@ package com.nonesoft.tutorial;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import lombok.NonNull;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 
 public class Bunny implements GameEntity {
     @Setter
@@ -27,11 +27,11 @@ public class Bunny implements GameEntity {
         position.mulAdd(velocity, deltaTime);
 
         if (position.x <= 0 || position.x >= bounds.x) velocity.x = -velocity.x;
-        if (position.y <= 0 || position.x >= bounds.y) velocity.y = -velocity.y;
+        if (position.y <= 0 || position.y >= bounds.y) velocity.y = -velocity.y;
     }
 
     @Override
-    public void draw(@NonNull SpriteBatch batch) {
+    public void draw(@NotNull SpriteBatch batch) {
         batch.draw(texture, position.x, position.y);
     }
 
